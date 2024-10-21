@@ -1,0 +1,41 @@
+{# templates/task/assignments.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Task Assignments{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Task Assignments</h1>
+
+    <div class="card">
+        <div class="card-body">
+            {% if assignments is not empty %}
+                <ul class="list-group">
+                    {% for assignment in assignments.assignments %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Task ID: {{ assignment.taskId }}</span>
+                            <span>{{ assignment.developer }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-warning mt-3" role="alert">
+                    No tasks were assigned.
+                </div>
+            {% endif %}
+            <h5 class="text-center">Tahmini Hafta: {{ assignments.totalWeeks }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
